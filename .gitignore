@@ -1,0 +1,9 @@
+.env
+.project
+.pydevproject
+.settings
+.pip_cache
+.tarball_cache
+.manifests
+/media
+/static
