@@ -33,7 +33,7 @@ import burlap
 set_site = common.set_site
 
 if not env.SITE:
-    set_site('asklet_site_site')
+    set_site('asklet_site')
 
 @task
 def collect_static():
@@ -79,7 +79,7 @@ def deploy1():
     tarball.deploy()
     
     # Configure and restart all other services.
-    service.configure()
+    #service.configure()#this wipes out all other sites
     service.deploy()
     service.restart()
 

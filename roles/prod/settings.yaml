@@ -5,6 +5,15 @@ inherits: all
 # For now, let's assume we'll do most development locally...
 hosts: ['?']
 
-# This is the base directory where all files will be installed once deployed.
-# For development, we'll just make this the CWD.
-remote_app_dir_template: "."
+services:
+-   common
+-   cron
+-   apache2
+#-   apache2_modevasive
+#-   apache2_modsecurity
+#-   apache2_visitors
+-   postgresqlclient
+-   postgresql
+-   ntpclient
+-   pip
+#-   memcache

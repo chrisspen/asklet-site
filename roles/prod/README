@@ -1,0 +1,9 @@
+To setup production system access run:
+    
+    fab prod user.generate_keys
+    fab prod user.passwordless
+
+Confirm with:
+
+    fab prod shell
+    

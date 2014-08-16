@@ -5,4 +5,40 @@ app_name: asklet_site
 default_site: asklet_site
 
 # This the template used to retrieving your Django app settings.
-settings_module: '%(app_name)s.settings'
+settings_module: '%(app_name)s.settings.settings'
+django_settings_module_template: '%(app_name)s.settings.settings'
+#django_settings_module: '%(app_name)s.settings'
+remote_app_src_package_dir_template: '%(remote_app_src_dir)s'
+remote_manage_dir_template: '%(remote_app_src_dir)s'
+
+apache_application_name: asklet_site
+#apache_server_aliases_template: www.mydomain%(apache_locale)s.com
+apache_sync_sets:
+    static:
+    -   local_path: "static/*"
+        remote_path: "%(remote_app_dir)s/static"
+apache_sync_sets_selected: ['static']
+
+apache_ssl_secure_paths: []
+
+#db_fixture_sets:
+#    new_site:
+db_install_sql_path_template: '%(src_dir)s/*/sql/*'
+db_schemas:
+-   public
+
+#TODO:remove this once upgraded to new method
+#db_postgresql_custom_load_cmd: 'gunzip -c %(db_remote_dump_fn)s | pg_restore -U %(db_postgresql_postgres_user)s --create --dbname=%(db_name)s'
+
+default_site: asklet_site
+
+#ip_dns_nameservers: '8.8.8.8'
+
+pip_python_version: 2.7
+pip_path: 'pip-%(pip_python_version)s'
+
+shell_default_dir_template: '%(remote_app_src_dir)s'
+
+tarball_extra_dirs:
+-   static
+-   media

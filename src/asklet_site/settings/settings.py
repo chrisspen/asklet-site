@@ -45,7 +45,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'sense',
+    'south',
+    #'sense',
     'asklet',
 )
 
@@ -92,7 +93,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-PROJECT_DIR = os.path.abspath(os.path.join(os.path.split(__file__)[0], '..', '..'))
+PROJECT_DIR = os.path.abspath(os.path.join(os.path.split(__file__)[0], '..', '..', '..'))
 
 STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 
@@ -113,3 +114,9 @@ TEMPLATE_DIRS = (
 ADMIN_TITLE = 'Asklet Administration'
 ADMIN_TITLE_SIMPLE = 'Asklet'
 
+ROLE = os.environ.get('ROLE', ROLE_DEV)
+try:
+    exec "from settings_%s import *" % ROLE
+except ImportError as e:
+    print e
+    
