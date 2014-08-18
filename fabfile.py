@@ -53,6 +53,23 @@ def push_static():
     apache.sync_media(sync_set='static')
 
 @task
+def get_conceptnet_data(dryrun=0):
+    dryrun = int(dryrun)
+    from burlap.dj import render_remote_paths
+    render_remote_paths()
+    cn_path = os.path.join(env.remote_app_dir, '.env/lib/python2.7/site-packages/conceptnet5/support_data')
+    
+    cmd = 'mkdir -p %s' % cn_path
+    print cmd
+    if not dryrun:
+        run(cmd)
+        
+    cmd = 'wget -P %s https://raw.githubusercontent.com/commonsense/conceptnet5/master/conceptnet5/support_data/iso639.txt' % cn_path
+    print cmd
+    if not dryrun:
+        run(cmd)
+
+@task
 def deploy1():
     """
     Runs all deployment tasks against the target.
