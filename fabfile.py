@@ -107,10 +107,10 @@ def deploy2():
     Assumes deploy_full() has been run at least once before.
     """
     push_static()
-    deploy3()
+    deploy3(dodb=1)
 
 @task
-def deploy3(dodb=1):
+def deploy3(dodb=0):
     """
     Simply uploads our application code and restarts Apache.
     Assumes deploy_full() has been run at least once before.
